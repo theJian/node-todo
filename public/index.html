@@ -1,1 +1,51 @@
-index.html
+<!-- index.html -->
+<!DOCTYPE html>
+<html ng-app="todo">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>node-todo app</title>
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css">
+	<style type="text/css">
+	html {overflow-y: overflow;}
+	body {padding-top: 50px;}
+	#todo-list {margin-top: 30px;}
+	</style>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.8/angular.min.js"></script>
+	<script src="./core.js"></script>
+</head>
+<body ng-controller="mainController">
+	<div class="container">
+
+		<div class="jumbotron text-center">
+			<h1>I'm a Todo-aholic<span class="label label-info">{{ todos.length }}</span></h1>
+		</div>
+
+		<div id="todo-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="checkbox" ng-repeat="todo in todos">
+					<label for="">
+						<input type="checkbox" ng-click="deleteTodo(todo._id)">{{ todo.text }}
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div id="todo-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+						<input type="text" ng-model="formData.text" class="form-control input-lg text-center">
+					</div>
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">add</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

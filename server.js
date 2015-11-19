@@ -51,6 +51,7 @@ app.post('/api/todos', function(req, res) {
 	});
 });
 
+// delete todo and send back all todos
 app.delete('/api/todos/:todo_id', function(req, res) {
 	Todo.remove({
 		_id: req.params.todo_id
@@ -67,7 +68,10 @@ app.delete('/api/todos/:todo_id', function(req, res) {
 	});
 });
 
-
+// application
+app.get('*', function (req, res) {
+	res.sendfile('./public/index.html');
+});
 
 // listen 
 app.listen(23333);
